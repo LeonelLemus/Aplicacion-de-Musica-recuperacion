@@ -12,8 +12,7 @@ namespace Aplicacion_de_Musica
 {
     public partial class frmBienvenida : Form
     {
-
-     
+    
         public frmBienvenida()
         {
             InitializeComponent();
@@ -44,11 +43,19 @@ namespace Aplicacion_de_Musica
 
         private void frmBienvenida_Load(object sender, EventArgs e)
         {
-          
+            
             this.Opacity = 0.0;
             circularProgressBar1.Value = 0;
             circularProgressBar1.Minimum = 0;
             circularProgressBar1.Maximum = 100;
+
+
+            timer1.Start();
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
 
         }
     }

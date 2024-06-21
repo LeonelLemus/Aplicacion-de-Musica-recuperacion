@@ -35,14 +35,14 @@ namespace Aplicacion_de_Musica
             // Validar las credenciales en la base de datos
             if (ValidarCredenciales(nombreUsuario, contraseña))
             {
-
-
                 this.Hide();
+                
+                
                 frmBienvenida bienvenida = new frmBienvenida();
                 bienvenida.ShowDialog();
                 frmCatalogo principalForm = new frmCatalogo();
                 principalForm.Show();
-                this.Hide();
+              
             }
             else
             {
