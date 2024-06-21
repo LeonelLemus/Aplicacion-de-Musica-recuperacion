@@ -35,8 +35,14 @@ namespace Aplicacion_de_Musica
             // Validar las credenciales en la base de datos
             if (ValidarCredenciales(nombreUsuario, contraseña))
             {
-                // Abrir el formulario principal si las credenciales son válidas
-                AbrirFormularioPrincipal();
+
+
+                this.Hide();
+                frmBienvenida bienvenida = new frmBienvenida();
+                bienvenida.ShowDialog();
+                frmCatalogo principalForm = new frmCatalogo();
+                principalForm.Show();
+                this.Hide();
             }
             else
             {
@@ -76,13 +82,8 @@ namespace Aplicacion_de_Musica
 
             return credencialesValidas;
         }
-        private void AbrirFormularioPrincipal()
-        {
-            // Aquí puedes abrir el formulario principal y pasar el nombre de usuario si es necesario
-            frmCatalogo principalForm = new frmCatalogo();
-            principalForm.Show();
-            this.Hide();
-        }
+
+
     }
 }
 
