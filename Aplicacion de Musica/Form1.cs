@@ -83,7 +83,11 @@ namespace Aplicacion_de_Musica
             return credencialesValidas;
         }
 
-
+        private void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            frmRegistro registrar = new frmRegistro();
+            registrar.Show();
+        }
     }
 }
 

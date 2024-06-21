@@ -42,6 +42,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
+            this.btnRegistrarse = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -89,7 +90,6 @@
             this.label2.Size = new System.Drawing.Size(348, 76);
             this.label2.TabIndex = 3;
             this.label2.Text = "Music-App";
-           
             // 
             // label
             // 
@@ -101,7 +101,6 @@
             this.label.Size = new System.Drawing.Size(85, 25);
             this.label.TabIndex = 4;
             this.label.Text = "Usuario:";
-           
             // 
             // txtNombreUsuario
             // 
@@ -173,6 +172,12 @@
             // 
             // btnIniciarSesion
             // 
+            this.btnIniciarSesion.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.btnIniciarSesion.FlatAppearance.BorderSize = 2;
+            this.btnIniciarSesion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.btnIniciarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIniciarSesion.Font = new System.Drawing.Font("Elephant", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIniciarSesion.ForeColor = System.Drawing.Color.White;
             this.btnIniciarSesion.Location = new System.Drawing.Point(880, 407);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(366, 46);
@@ -181,12 +186,29 @@
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
             this.btnIniciarSesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
+            // btnRegistrarse
+            // 
+            this.btnRegistrarse.FlatAppearance.BorderColor = System.Drawing.Color.Yellow;
+            this.btnRegistrarse.FlatAppearance.BorderSize = 2;
+            this.btnRegistrarse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Yellow;
+            this.btnRegistrarse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarse.ForeColor = System.Drawing.Color.Blue;
+            this.btnRegistrarse.Location = new System.Drawing.Point(974, 477);
+            this.btnRegistrarse.Name = "btnRegistrarse";
+            this.btnRegistrarse.Size = new System.Drawing.Size(155, 40);
+            this.btnRegistrarse.TabIndex = 13;
+            this.btnRegistrarse.Text = "Crear Cuenta";
+            this.btnRegistrarse.UseVisualStyleBackColor = true;
+            this.btnRegistrarse.Click += new System.EventHandler(this.btnRegistrarse_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1401, 529);
+            this.Controls.Add(this.btnRegistrarse);
             this.Controls.Add(this.btnIniciarSesion);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -229,6 +251,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button btnIniciarSesion;
+        private System.Windows.Forms.Button btnRegistrarse;
     }
 }
 
