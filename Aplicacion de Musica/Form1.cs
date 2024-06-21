@@ -16,5 +16,20 @@ namespace Aplicacion_de_Musica
         {
             InitializeComponent();
         }
+
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = true;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
