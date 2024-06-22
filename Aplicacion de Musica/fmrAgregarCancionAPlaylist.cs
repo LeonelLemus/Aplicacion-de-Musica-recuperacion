@@ -54,7 +54,9 @@ namespace Aplicacion_de_Musica
                     ListViewItem item = new ListViewItem(row["Titulo"].ToString());
                     item.SubItems.Add(row["Album"].ToString());
                     item.SubItems.Add(row["Artista"].ToString());
-                   
+
+                    item.Tag = row["ID"];
+
 
                     string imagenRelativa = row["ImagenUrl"].ToString();
                     string imagenAbsoluta = Path.Combine(baseDirectory, imagenRelativa);
