@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,27 +59,23 @@ namespace Aplicacion_de_Musica
                     item.Tag = row["ID"];
 
 
-                    string imagenRelativa = row["ImagenUrl"].ToString();
-                    string imagenAbsoluta = Path.Combine(baseDirectory, imagenRelativa);
-                    if (File.Exists(imagenAbsoluta))
+                    string imageUrl = row["ImagenUrl"].ToString();
+                    try
                     {
-                        try
+                        using (WebClient client = new WebClient())
                         {
-                            using (FileStream stream = new FileStream(imagenAbsoluta, FileMode.Open))
+                            byte[] imageData = client.DownloadData(imageUrl);
+                            using (MemoryStream stream = new MemoryStream(imageData))
                             {
                                 Image img = Image.FromStream(stream);
                                 imageList.Images.Add(img);
                                 item.ImageIndex = imageList.Images.Count - 1;
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error al cargar la imagen: " + ex.Message);
-                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Archivo de imagen no encontrado: " + imagenAbsoluta);
+                        MessageBox.Show("Error al cargar la imagen: " + ex.Message);
                     }
 
                     listViewCancionesDisponibles.Items.Add(item);

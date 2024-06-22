@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnEliminarCancion = new System.Windows.Forms.Button();
             this.btnEliminarPlaylist = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.listViewPlaylists = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnEliminarCancion = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnPausarReanudar = new System.Windows.Forms.Button();
+            this.btnReproducir = new System.Windows.Forms.Button();
             this.listViewCancionesPlaylist = new System.Windows.Forms.ListView();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
-            this.btnReproducir = new System.Windows.Forms.Button();
-            this.btnPausarReanudar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,20 +57,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(381, 617);
             this.panel1.TabIndex = 0;
-            // 
-            // btnEliminarCancion
-            // 
-            this.btnEliminarCancion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnEliminarCancion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnEliminarCancion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarCancion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarCancion.Location = new System.Drawing.Point(54, 534);
-            this.btnEliminarCancion.Name = "btnEliminarCancion";
-            this.btnEliminarCancion.Size = new System.Drawing.Size(210, 44);
-            this.btnEliminarCancion.TabIndex = 4;
-            this.btnEliminarCancion.Text = "Eliminar Canción";
-            this.btnEliminarCancion.UseVisualStyleBackColor = false;
-            this.btnEliminarCancion.Click += new System.EventHandler(this.btnEliminarCancion_Click);
             // 
             // btnEliminarPlaylist
             // 
@@ -125,6 +111,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Playlists Creadas";
             // 
+            // btnEliminarCancion
+            // 
+            this.btnEliminarCancion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnEliminarCancion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnEliminarCancion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarCancion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarCancion.Location = new System.Drawing.Point(54, 534);
+            this.btnEliminarCancion.Name = "btnEliminarCancion";
+            this.btnEliminarCancion.Size = new System.Drawing.Size(210, 44);
+            this.btnEliminarCancion.TabIndex = 4;
+            this.btnEliminarCancion.Text = "Eliminar Canción";
+            this.btnEliminarCancion.UseVisualStyleBackColor = false;
+            this.btnEliminarCancion.Click += new System.EventHandler(this.btnEliminarCancion_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -139,6 +139,29 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(894, 617);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // btnPausarReanudar
+            // 
+            this.btnPausarReanudar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnPausarReanudar.Location = new System.Drawing.Point(588, 534);
+            this.btnPausarReanudar.Name = "btnPausarReanudar";
+            this.btnPausarReanudar.Size = new System.Drawing.Size(206, 56);
+            this.btnPausarReanudar.TabIndex = 6;
+            this.btnPausarReanudar.Text = "Pausar";
+            this.btnPausarReanudar.UseVisualStyleBackColor = true;
+            this.btnPausarReanudar.Click += new System.EventHandler(this.btnPausarReanudar_Click);
+            // 
+            // btnReproducir
+            // 
+            this.btnReproducir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnReproducir.Location = new System.Drawing.Point(349, 534);
+            this.btnReproducir.Name = "btnReproducir";
+            this.btnReproducir.Size = new System.Drawing.Size(180, 56);
+            this.btnReproducir.TabIndex = 5;
+            this.btnReproducir.Text = "Reproducir";
+            this.btnReproducir.UseVisualStyleBackColor = true;
+            this.btnReproducir.Click += new System.EventHandler(this.btnReproducir_Click);
             // 
             // listViewCancionesPlaylist
             // 
@@ -167,28 +190,6 @@
             this.label2.Size = new System.Drawing.Size(251, 34);
             this.label2.TabIndex = 0;
             this.label2.Text = "Canciones de Playlist";
-            // 
-            // btnReproducir
-            // 
-            this.btnReproducir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnReproducir.Location = new System.Drawing.Point(349, 534);
-            this.btnReproducir.Name = "btnReproducir";
-            this.btnReproducir.Size = new System.Drawing.Size(180, 56);
-            this.btnReproducir.TabIndex = 5;
-            this.btnReproducir.Text = "Reproducir";
-            this.btnReproducir.UseVisualStyleBackColor = true;
-            this.btnReproducir.Click += new System.EventHandler(this.btnReproducir_Click);
-            // 
-            // btnPausarReanudar
-            // 
-            this.btnPausarReanudar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnPausarReanudar.Location = new System.Drawing.Point(588, 534);
-            this.btnPausarReanudar.Name = "btnPausarReanudar";
-            this.btnPausarReanudar.Size = new System.Drawing.Size(206, 56);
-            this.btnPausarReanudar.TabIndex = 6;
-            this.btnPausarReanudar.Text = "Pausar";
-            this.btnPausarReanudar.UseVisualStyleBackColor = true;
-            this.btnPausarReanudar.Click += new System.EventHandler(this.btnPausarReanudar_Click);
             // 
             // frmPlaylist
             // 

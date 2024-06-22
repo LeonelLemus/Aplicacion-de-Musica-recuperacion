@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -107,29 +108,25 @@ namespace Aplicacion_de_Musica
                     ListViewItem item = new ListViewItem(reader["Titulo"].ToString());
                     item.SubItems.Add(reader["Album"].ToString());
                     item.SubItems.Add(reader["Artista"].ToString());
-                    item.Tag = Path.Combine(baseDirectory, reader["AudioFilePath"].ToString());
+                    item.Tag = reader["AudioFilePath"].ToString();
 
-                    string imagenRelativa = reader["ImagenUrl"].ToString();
-                    string imagenAbsoluta = Path.Combine(baseDirectory, imagenRelativa);
-                    if (File.Exists(imagenAbsoluta))
+                    string imageUrl = reader["ImagenUrl"].ToString();
+                    try
                     {
-                        try
+                        using (WebClient client = new WebClient())
                         {
-                            using (FileStream stream = new FileStream(imagenAbsoluta, FileMode.Open))
+                            byte[] imageData = client.DownloadData(imageUrl);
+                            using (MemoryStream stream = new MemoryStream(imageData))
                             {
                                 Image img = Image.FromStream(stream);
                                 imageList.Images.Add(img);
                                 item.ImageIndex = imageList.Images.Count - 1;
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error al cargar la imagen: " + ex.Message);
-                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Archivo de imagen no encontrado: " + imagenAbsoluta);
+                        MessageBox.Show("Error al cargar la imagen: " + ex.Message);
                     }
 
                     listViewCancionesPlaylist.Items.Add(item);
@@ -289,19 +286,33 @@ namespace Aplicacion_de_Musica
             }
         }
 
-        private void ReproducirCancion(string filePath)
+        private void ReproducirCancion(string audioUrl)
         {
             DetenerReproduccion();
 
             waveOutDevice = new WaveOut();
-            audioFileReader = new AudioFileReader(filePath);
-            waveOutDevice.Init(audioFileReader);
-            waveOutDevice.Play();
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    byte[] audioData = client.DownloadData(audioUrl);
+                    string tempFilePath = Path.GetTempFileName();
+                    File.WriteAllBytes(tempFilePath, audioData);
+                    audioFileReader = new AudioFileReader(tempFilePath);
+                    waveOutDevice.Init(audioFileReader);
+                    waveOutDevice.Play();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al reproducir la canción: " + ex.Message);
+            }
 
             waveOutDevice.PlaybackStopped += (s, a) =>
             {
                 DetenerReproduccion();
             };
+
 
         }
 
@@ -322,5 +333,9 @@ namespace Aplicacion_de_Musica
 
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

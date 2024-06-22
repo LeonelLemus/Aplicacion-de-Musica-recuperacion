@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
@@ -41,9 +42,6 @@ namespace Aplicacion_de_Musica
 
         private void frmCatalogo_Load(object sender, EventArgs e)
         {
-
-            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
             using (MySqlConnection con = new MySqlConnection("Server=localhost;Port=3306;Database=musicapp;user=root;password=;"))
             {
                 con.Open();
@@ -57,29 +55,25 @@ namespace Aplicacion_de_Musica
                     ListViewItem item = new ListViewItem(row["Titulo"].ToString());
                     item.SubItems.Add(row["Album"].ToString());
                     item.SubItems.Add(row["Artista"].ToString());
-                    item.Tag = row["AudioFilePath"].ToString();
+                    item.Tag = row["AudioFilePath"].ToString();  // Suponiendo que 'AudioURL' es la columna con el enlace de la canción
 
-                    string imagenRelativa = row["ImagenUrl"].ToString();
-                    string imagenAbsoluta = Path.Combine(baseDirectory, imagenRelativa);
-                    if (File.Exists(imagenAbsoluta))
+                    string imageUrl = row["ImagenUrl"].ToString();
+                    try
                     {
-                        try
+                        using (WebClient client = new WebClient())
                         {
-                            using (FileStream stream = new FileStream(imagenAbsoluta, FileMode.Open))
+                            byte[] imageData = client.DownloadData(imageUrl);
+                            using (MemoryStream stream = new MemoryStream(imageData))
                             {
                                 Image img = Image.FromStream(stream);
                                 imageList.Images.Add(img);
                                 item.ImageIndex = imageList.Images.Count - 1;
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error al cargar la imagen: " + ex.Message);
-                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Archivo de imagen no encontrado: " + imagenAbsoluta);
+                        MessageBox.Show("Error al cargar la imagen: " + ex.Message);
                     }
 
                     listViewCatalogo.Items.Add(item);
@@ -129,21 +123,34 @@ namespace Aplicacion_de_Musica
             e.DrawText();
         }
 
-        private void ReproducirCancion(string filePath)
+        private void ReproducirCancion(string audioUrl)
         {
             DetenerReproduccion();
 
             waveOutDevice = new WaveOut();
-            audioFileReader = new AudioFileReader(filePath);
-            waveOutDevice.Init(audioFileReader);
-            waveOutDevice.Play();
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    byte[] audioData = client.DownloadData(audioUrl);
+                    string tempFilePath = Path.GetTempFileName();
+                    File.WriteAllBytes(tempFilePath, audioData);
+                    audioFileReader = new AudioFileReader(tempFilePath);
+                    waveOutDevice.Init(audioFileReader);
+                    waveOutDevice.Play();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al reproducir la canción: " + ex.Message);
+            }
 
             waveOutDevice.PlaybackStopped += (s, a) =>
             {
                 DetenerReproduccion();
             };
 
-            lblEstado.Text = "Reproduciendo: " + Path.GetFileName(filePath);
+            lblEstado.Text = "Reproduciendo: " + audioUrl;
         }
 
         private void DetenerReproduccion()
