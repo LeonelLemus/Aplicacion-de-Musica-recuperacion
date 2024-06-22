@@ -55,7 +55,7 @@ namespace Aplicacion_de_Musica
                     ListViewItem item = new ListViewItem(row["Titulo"].ToString());
                     item.SubItems.Add(row["Album"].ToString());
                     item.SubItems.Add(row["Artista"].ToString());
-                    item.Tag = row["AudioFilePath"].ToString();  // Suponiendo que 'AudioURL' es la columna con el enlace de la canción
+                    item.Tag = row["AudioFilePath"].ToString();  
 
                     string imageUrl = row["ImagenUrl"].ToString();
                     try
