@@ -117,4 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        EQAACxEBf2RfkQAAAQlJREFUaEPtli0LwlAUhvfPBJNVLYJVMBlNZqNisgkGgxgsQ8EZDLZVsTnBYjAa
+        DBqODO5tR677uF/wPvCku3vOednutgAAAIBxJos16VCU1w/XvAxFef3IhvvrpxQRQIVsYFrRvjhccROK
+        9sWRBbnbr0MEkAVcU4ynhtvsgmI8NXIDd3ttiAC2RQDbGg0wWt4oSt7sWl6NBqjUN9TqHWm2f7DreTQe
+        QNoZxLSKn+x1WbQWILXa3FJ/fKLw/GKv/0erAaS1dkTDeUK7S/bz4UQAaaN7oGl4Z/f+EgGyyA2d6u0j
+        5PUh9vY16vWHzPtfCR0igG0RwLa5A7imGE8Nt9kFxXgAAADKIgi+VIlu+hR9vZAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="imageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>18, 17</value>
+  </metadata>
 </root>
