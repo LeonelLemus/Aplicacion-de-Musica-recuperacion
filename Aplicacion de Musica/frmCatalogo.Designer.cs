@@ -34,8 +34,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCrearPlaylist = new System.Windows.Forms.Button();
+            this.btnVerPlaylist = new System.Windows.Forms.Button();
             this.listViewCatalogo = new System.Windows.Forms.ListView();
             this.btnReproducir = new System.Windows.Forms.Button();
             this.btnPausarReanudar = new System.Windows.Forms.Button();
@@ -50,8 +50,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnCrearPlaylist);
+            this.panel1.Controls.Add(this.btnVerPlaylist);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -70,7 +70,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(122, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(122, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -88,23 +88,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Playlist";
             // 
-            // button2
+            // btnCrearPlaylist
             // 
-            this.button2.Location = new System.Drawing.Point(4, 214);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 36);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Crear una PLaylist";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCrearPlaylist.Location = new System.Drawing.Point(4, 214);
+            this.btnCrearPlaylist.Name = "btnCrearPlaylist";
+            this.btnCrearPlaylist.Size = new System.Drawing.Size(136, 36);
+            this.btnCrearPlaylist.TabIndex = 2;
+            this.btnCrearPlaylist.Text = "Crear una PLaylist";
+            this.btnCrearPlaylist.UseVisualStyleBackColor = true;
+            this.btnCrearPlaylist.Click += new System.EventHandler(this.btnCrearPlaylist_Click);
             // 
-            // button1
+            // btnVerPlaylist
             // 
-            this.button1.Location = new System.Drawing.Point(3, 171);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Ver mis playlist";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnVerPlaylist.Location = new System.Drawing.Point(3, 171);
+            this.btnVerPlaylist.Name = "btnVerPlaylist";
+            this.btnVerPlaylist.Size = new System.Drawing.Size(113, 36);
+            this.btnVerPlaylist.TabIndex = 1;
+            this.btnVerPlaylist.Text = "Ver mis playlist";
+            this.btnVerPlaylist.UseVisualStyleBackColor = true;
+            this.btnVerPlaylist.Click += new System.EventHandler(this.btnVerPlaylist_Click);
             // 
             // listViewCatalogo
             // 
@@ -118,6 +120,7 @@
             this.listViewCatalogo.StateImageList = this.imageList;
             this.listViewCatalogo.TabIndex = 1;
             this.listViewCatalogo.UseCompatibleStateImageBehavior = false;
+            this.listViewCatalogo.SelectedIndexChanged += new System.EventHandler(this.listViewCatalogo_SelectedIndexChanged);
             // 
             // btnReproducir
             // 
@@ -181,8 +184,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCrearPlaylist;
+        private System.Windows.Forms.Button btnVerPlaylist;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;

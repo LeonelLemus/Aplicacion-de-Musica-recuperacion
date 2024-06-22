@@ -134,6 +134,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fmrAgregarCancionAPlaylist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrAgregarCancionAPlaylist.Designer.cs">
+      <DependentUpon>fmrAgregarCancionAPlaylist.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,18 @@
     <Compile Include="frmCatalogo.Designer.cs">
       <DependentUpon>frmCatalogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCrearPLaylist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCrearPLaylist.Designer.cs">
+      <DependentUpon>frmCrearPLaylist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlaylist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlaylist.Designer.cs">
+      <DependentUpon>frmPlaylist.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +178,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="fmrAgregarCancionAPlaylist.resx">
+      <DependentUpon>fmrAgregarCancionAPlaylist.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +189,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCatalogo.resx">
       <DependentUpon>frmCatalogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCrearPLaylist.resx">
+      <DependentUpon>frmCrearPLaylist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlaylist.resx">
+      <DependentUpon>frmPlaylist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegistro.resx">
       <DependentUpon>frmRegistro.cs</DependentUpon>

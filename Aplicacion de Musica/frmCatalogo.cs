@@ -15,11 +15,12 @@ namespace Aplicacion_de_Musica
         private IWavePlayer waveOutDevice;
         private AudioFileReader audioFileReader;
         private bool isPaused;
+        private int usuarioID;
 
-
-        public frmCatalogo()
+        public frmCatalogo(int userId)
         {
             InitializeComponent();
+            usuarioID = userId;
 
             listViewCatalogo.View = View.Details;
             listViewCatalogo.OwnerDraw = true;
@@ -184,7 +185,7 @@ namespace Aplicacion_de_Musica
                 {
                     waveOutDevice.Play();
                     btnPausarReanudar.Text = "Pausar";
-                    lblEstado.Text = "Reproducción reanudada";
+                    lblEstado.Text = "Reproduciendo";
                     isPaused = false;
                 }
                 else
@@ -195,6 +196,23 @@ namespace Aplicacion_de_Musica
                     isPaused = true;
                 }
             }
+        }
+
+        private void btnVerPlaylist_Click(object sender, EventArgs e)
+        {
+            frmPlaylist VerPlaylists = new frmPlaylist(usuarioID);
+            VerPlaylists.ShowDialog();
+        }
+
+        private void btnCrearPlaylist_Click(object sender, EventArgs e)
+        {
+            frmCrearPLaylist CrearPlaylist = new frmCrearPLaylist(usuarioID);
+            CrearPlaylist.ShowDialog();
+        }
+
+        private void listViewCatalogo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

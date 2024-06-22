@@ -14,6 +14,7 @@ namespace Aplicacion_de_Musica
 {
     public partial class frmLogin : Form
     {
+        int usuarioID;
         public frmLogin()
         {
             InitializeComponent();
@@ -35,12 +36,13 @@ namespace Aplicacion_de_Musica
             // Validar las credenciales en la base de datos
             if (ValidarCredenciales(nombreUsuario, contraseña))
             {
+                
                 this.Hide();
                 
                 
                 frmBienvenida bienvenida = new frmBienvenida();
                 bienvenida.ShowDialog();
-                frmCatalogo principalForm = new frmCatalogo();
+                frmCatalogo principalForm = new frmCatalogo(usuarioID);
                 principalForm.Show();
               
             }
@@ -70,6 +72,7 @@ namespace Aplicacion_de_Musica
                     if (reader.Read())
                     {
                         credencialesValidas = true;
+                         usuarioID = Convert.ToInt32(reader["ID"]);
                     }
 
                     reader.Close();
@@ -87,6 +90,11 @@ namespace Aplicacion_de_Musica
         {
             frmRegistro registrar = new frmRegistro();
             registrar.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
