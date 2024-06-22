@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using NAudio.Wave;
 
 namespace Aplicacion_de_Musica
@@ -213,6 +214,39 @@ namespace Aplicacion_de_Musica
         private void listViewCatalogo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres cerrar sesión?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+
+
+                frmLogin loginForm = new frmLogin();
+                loginForm.Show();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres cerrar sesión?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+
+
+                frmLogin loginForm = new frmLogin();
+                loginForm.Show();
+            }
         }
     }
 }

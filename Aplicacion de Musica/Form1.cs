@@ -96,6 +96,18 @@ namespace Aplicacion_de_Musica
         {
 
         }
+
+       
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Estás seguro de que quieres salir?", "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
 
